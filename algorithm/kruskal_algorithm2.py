@@ -1,8 +1,9 @@
 #! /usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 """
 以下代码参考http://www.ics.uci.edu/~eppstein/PADS/的源码
 """
+
 
 class UnionFind:
     """
@@ -46,7 +47,7 @@ class UnionFind:
         for ancestor in path:
             self.parents[ancestor] = root
         return root
-        
+
     def __iter__(self):
         """Iterate through all items ever found or unioned by this structure."""
         return iter(self.parents)
@@ -54,7 +55,7 @@ class UnionFind:
     def union(self, *objects):
         """Find the sets containing the objects and merge them all."""
         roots = [self[x] for x in objects]
-        heaviest = max([(self.weights[r],r) for r in roots])[1]
+        heaviest = max([(self.weights[r], r) for r in roots])[1]
         for r in roots:
             if r != heaviest:
                 self.weights[heaviest] += self.weights[r]
@@ -69,6 +70,7 @@ Each function's input graph G should be represented in such a way that "for v in
 
 D. Eppstein, April 2004.
 """
+
 
 def isUndirected(G):
     """Check that G represents a simple undirected graph."""
@@ -86,7 +88,7 @@ def union(*graphs):
     out = {}
     for G in graphs:
         for v in G:
-            out.setdefault(v,set()).update(list(G[v]))
+            out.setdefault(v, set()).update(list(G[v]))
     return out
 
 
@@ -96,6 +98,7 @@ Kruskal's algorithm for minimum spanning trees. D. Eppstein, April 2006.
 """
 
 import unittest
+
 
 def MinimumSpanningTree(G):
     """
@@ -118,11 +121,11 @@ def MinimumSpanningTree(G):
     # part (the sort) is sped up by being built in to Python.
     subtrees = UnionFind()
     tree = []
-    for W,u,v in sorted((G[u][v],u,v) for u in G for v in G[u]):
+    for W, u, v in sorted((G[u][v], u, v) for u in G for v in G[u]):
         if subtrees[u] != subtrees[v]:
-            tree.append((u,v))
-            subtrees.union(u,v)
-    return tree        
+            tree.append((u, v))
+            subtrees.union(u, v)
+    return tree
 
 
 # If run standalone, perform unit tests
@@ -130,11 +133,12 @@ def MinimumSpanningTree(G):
 class MSTTest(unittest.TestCase):
     def testMST(self):
         """Check that MinimumSpanningTree returns the correct answer."""
-        G = {0:{1:11,2:13,3:12},1:{0:11,3:14},2:{0:13,3:10},3:{0:12,1:14,2:10}}
-        T = [(2,3),(0,1),(0,3)]
-        for e,f in zip(MinimumSpanningTree(G),T):
-            self.assertEqual(min(e),min(f))
-            self.assertEqual(max(e),max(f))
+        G = {0: {1: 11, 2: 13, 3: 12}, 1: {0: 11, 3: 14}, 2: {0: 13, 3: 10}, 3: {0: 12, 1: 14, 2: 10}}
+        T = [(2, 3), (0, 1), (0, 3)]
+        for e, f in zip(MinimumSpanningTree(G), T):
+            self.assertEqual(min(e), min(f))
+            self.assertEqual(max(e), max(f))
+
 
 if __name__ == "__main__":
-    unittest.main()   
+    unittest.main()

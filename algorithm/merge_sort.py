@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 """
 #solve 1
 
@@ -60,21 +60,24 @@ def merge_sort(lst):   #此方法来自维基百科：http://zh.wikipedia.org/zh
     right = merge_sort(lst[middle:])
     return merge(left, right)
 """
-#solve 3
-#以下方法来自：http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Python
-#稍作修改
+# solve 3
+# 以下方法来自：http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Python
+# 稍作修改
 
 from heapq import merge
- 
+
+
 def merge_sort(seq):
     if len(seq) <= 1:
         return seq
     else:
-        middle = len(seq)/2
+        middle = len(seq) / 2
         left = merge_sort(seq[:middle])
         right = merge_sort(seq[middle:])
-        return list(merge(left,right))
+        return list(merge(left, right))
 
-if __name__=="__main__":
-    seq = [1,3,6,2,4]
-    print merge_sort(seq)
+
+if __name__ == "__main__":
+    seq = [1, 3, 6, 2, 4]
+    print
+    merge_sort(seq)

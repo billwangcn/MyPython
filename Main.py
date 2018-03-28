@@ -1,4 +1,5 @@
-#
+#! /usr/bin/env python
+#coding:utf-8
 
 import os
 
@@ -8,7 +9,6 @@ def sub01():
 
 def sub02():
     print(os.getcwd())
-        
-    
+
 if __name__ == '__main__':
     sub02()

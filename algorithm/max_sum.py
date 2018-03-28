@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 def max_array(lst):
     """面试题：最大连续子数组，求一个有正，有负数的数组(有正和负数，没有全是负数的情况)，
@@ -17,5 +17,6 @@ def max_array(lst):
             this_sum = 0
     return max_sum
 
-test_lst = [-2,11,-4,13,-5,-2]
+
+test_lst = [-2, 11, -4, 13, -5, -2]
 print(max_array(test_lst))

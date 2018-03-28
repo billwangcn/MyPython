@@ -1,5 +1,5 @@
 #! /user/bin/env python
-#coding:utf-8
+# coding:utf-8
 
 """
 把一个int型数组中的数字拼成一个串，这个串代表的数字最小;
@@ -20,13 +20,14 @@
 ４、将list2中的数字（str类型）组装成一个数值(str类型)
 """
 
+
 def joint_int(lst):
     str_list = [str(i) for i in lst]
     str_lonely = [str_list[i][j] for i in range(len(str_list)) for j in range(len(str_list[i]))]
-    
+
     sorted_str = sorted(str_lonely)
     return "".join(sorted_str)
 
-print joint_int([1230975,4087644567856])
 
-
+print
+joint_int([1230975, 4087644567856])

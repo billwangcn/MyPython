@@ -1,28 +1,28 @@
 #! /usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 
 # The code is from:http://code.activestate.com/recipes/286239-binary-ordered-tree/
 # A binary ordered tree example
 
 class CNode:
-    left , right, data = None, None, 0
-    
+    left, right, data = None, None, 0
+
     def __init__(self, data):
         # initializes the data members
         self.left = None
         self.right = None
         self.data = data
 
-        
+
 class CBOrdTree:
     def __init__(self):
         # initializes the root member
         self.root = None
-        
+
     def addNode(self, data):
         # creates a new node and returns it
         return CNode(data)
-            
+
     def insert(self, root, data):
         # inserts a new data
         if root == None:
@@ -39,7 +39,7 @@ class CBOrdTree:
                 # processes the right-sub-tree
                 root.right = self.insert(root.right, data)
                 return root
-                    
+
     def lookup(self, root, target):
         # looks for a value into the tree
         if root == None:
@@ -55,14 +55,14 @@ class CBOrdTree:
                 else:
                     # right side
                     return self.lookup(root.right, target)
-                        
+
     def minValue(self, root):
         # goes down into the left
         # arm and returns the last value
-        while(root.left != None):
+        while (root.left != None):
             root = root.left
             return root.data
-               
+
     def maxDepth(self, root):
         if root == None:
             return 0
@@ -72,22 +72,23 @@ class CBOrdTree:
             rdepth = self.maxDepth(root.right)
             # returns the appropriate depth
             return max(ldepth, rdepth) + 1
-               
+
     def size(self, root):
         if root == None:
             return 0
         else:
             return self.size(root.left) + 1 + self.size(root.right)
-            
+
     def printTree(self, root):
         # prints the tree path
         if root == None:
             pass
         else:
             self.printTree(root.left)
-            print root.data,
+            print
+            root.data,
             self.printTree(root.right)
-            
+
     def printRevTree(self, root):
         # prints the tree path in reverse
         # order
@@ -95,9 +96,11 @@ class CBOrdTree:
             pass
         else:
             self.printRevTree(root.right)
-            print root.data,
+            print
+            root.data,
             self.printRevTree(root.left)
-            
+
+
 if __name__ == "__main__":
     # create the binary tree
     BTree = CBOrdTree()
@@ -109,17 +112,22 @@ if __name__ == "__main__":
         # insert values
         BTree.insert(root, data)
     print
-        
+
     BTree.printTree(root)
     print
     BTree.printRevTree(root)
     print
     data = int(raw_input("insert a value to find: "))
     if BTree.lookup(root, data):
-        print "found"
+        print
+        "found"
     else:
-        print "not found"
+        print
+        "not found"
 
-    print BTree.minValue(root)
-    print BTree.maxDepth(root)
-    print BTree.size(root)
+    print
+    BTree.minValue(root)
+    print
+    BTree.maxDepth(root)
+    print
+    BTree.size(root)

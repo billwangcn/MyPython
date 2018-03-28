@@ -1,10 +1,11 @@
 #! /usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 
 class Node:
     """
     二叉树左右枝
     """
+
     def __init__(self, data):
         """
         节点结构
@@ -48,9 +49,9 @@ class Node:
         """
         删除节点
         """
-        node, parent = self.lookup(data)        #已有节点
+        node, parent = self.lookup(data)  # 已有节点
         if node is not None:
-            children_count = node.children_count()      #判断子节点数
+            children_count = node.children_count()  # 判断子节点数
             if children_count == 0:
                 # 如果该节点下没有子节点，即可删除
                 if parent.left is node:
@@ -105,14 +106,15 @@ class Node:
         else:
             res = self.right.compare_trees(node.right)
         return res
-                
+
     def print_tree(self):
         """
         按顺序打印数的内容
         """
         if self.left:
             self.left.print_tree()
-        print self.data,
+        print
+        self.data,
         if self.right:
             self.right.print_tree()
 
@@ -122,11 +124,11 @@ class Node:
         """
         stack = []
         node = self
-        while stack or node: 
+        while stack or node:
             if node:
                 stack.append(node)
                 node = node.left
-            else: 
+            else:
                 node = stack.pop()
                 yield node.data
                 node = node.right
@@ -141,4 +143,3 @@ class Node:
         if self.right:
             cnt += 1
         return cnt
-

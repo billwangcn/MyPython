@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 """
 问题：快速排序
 
@@ -34,7 +34,8 @@ R[low..pivotpos-1].keys≤R[pivotpos].key≤R[pivotpos+1..high].keys
 因为当"求解"步骤中的两个递归调用结束时，其左、右两个子区间已有序。对快速排序而言，"组合"步骤无须做什么，可看作是空操作。
 """
 
-#方法1
+
+# 方法1
 
 def quickSort(arr):
     less = []
@@ -43,7 +44,7 @@ def quickSort(arr):
     if len(arr) <= 1:
         return arr
     else:
-        pivot = arr[0]      #将第一个值做为基准
+        pivot = arr[0]  # 将第一个值做为基准
         for i in arr:
             if i < pivot:
                 less.append(i)
@@ -52,10 +53,11 @@ def quickSort(arr):
             else:
                 pivotList.append(i)
 
-        less = quickSort(less)      #得到第一轮分组之后，继续将分组进行下去。
+        less = quickSort(less)  # 得到第一轮分组之后，继续将分组进行下去。
         more = quickSort(more)
 
         return less + pivotList + more
+
 
 """
 #方法2
@@ -79,25 +81,30 @@ def qsort(list):
         return qsort(less) + [pivot] + qsort(more)
 """
 
-#方法4
+# 方法4
 from random import *
+
 
 def qSort(a):
     if len(a) <= 1:
         return a
     else:
-        q = choice(a)       #基准的选择不同于前，是从数组中任意选择一个值做为基准
+        q = choice(a)  # 基准的选择不同于前，是从数组中任意选择一个值做为基准
         return qSort([elem for elem in a if elem < q]) + [q] * a.count(q) + qSort([elem for elem in a if elem > q])
 
 
-#方法5
-#这个最狠了，一句话搞定快速排序，瞠目结舌吧。
+# 方法5
+# 这个最狠了，一句话搞定快速排序，瞠目结舌吧。
 
-qs = lambda xs : ( (len(xs) <= 1 and [xs]) or [ qs( [x for x in xs[1:] if x < xs[0]] ) + [xs[0]] + qs( [x for x in xs[1:] if x >= xs[0]] ) ] )[0]
+qs = lambda xs: \
+((len(xs) <= 1 and [xs]) or [qs([x for x in xs[1:] if x < xs[0]]) + [xs[0]] + qs([x for x in xs[1:] if x >= xs[0]])])[0]
 
-if __name__=="__main__":
+if __name__ == "__main__":
     a = [4, 65, 2, -31, 0, 99, 83, 782, 1]
-    print quickSort(a)
-    print qSort(a)
+    print
+    quickSort(a)
+    print
+    qSort(a)
 
-    print qs(a)
+    print
+    qs(a)

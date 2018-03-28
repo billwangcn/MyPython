@@ -1,5 +1,5 @@
 #!/usr/bin/evn python
-#coding:utf-8
+# coding:utf-8
 """
 #问题
 
@@ -32,21 +32,23 @@ list.index()无法应对大规模数据的查询，需要用其它方法解决�
 这种搜索算法每一次比较都使搜索范围缩小一半。时间复杂度：O(logn)
 """
 
-def binarySearch(lst, value,low,high):          #low,high是lst的查找范围
+
+def binarySearch(lst, value, low, high):  # low,high是lst的查找范围
     if high < low:
         return -1
-    mid = (low + high)/2
+    mid = (low + high) / 2
     if lst[mid] > value:
-        return binarySearch(lst, value, low, mid-1)
+        return binarySearch(lst, value, low, mid - 1)
     elif lst[mid] < value:
-        return binarySearch(lst, value, mid+1, high)
+        return binarySearch(lst, value, mid + 1, high)
     else:
         return mid
 
-#也可以不用递归方法，而采用循环，如下：
- 
+
+# 也可以不用递归方法，而采用循环，如下：
+
 def bsearch(l, value):
-    lo, hi = 0, len(l)-1
+    lo, hi = 0, len(l) - 1
     while lo <= hi:
         mid = (lo + hi) / 2
         if l[mid] < value:
@@ -56,7 +58,8 @@ def bsearch(l, value):
         else:
             return mid
     return -1
- 
+
+
 """
 对于python，不能忽视其强大的标准库。经查阅，发现标准库中就有一个模块，名为：bisect。其文档中有这样一句话：
 
@@ -76,16 +79,20 @@ def bsearch(l, value):
 
 -关于本模块，可以查看官方文档：https://docs.python.org/2/library/bisect.html
 """
-#下面演示这个模块
+# 下面演示这个模块
 
 from bisect import *
 
-def bisectSearch(lst, x):        
-    i = bisect_left(lst, x)         #bisect_left(lst,x)得到x在已经排序的lst中的位置
+
+def bisectSearch(lst, x):
+    i = bisect_left(lst, x)  # bisect_left(lst,x)得到x在已经排序的lst中的位置
     if i != len(lst) and lst[i] == x:
         return i
 
-if __name__=="__main__":
-    lst = sorted([2,5,3,8])
-    print bisectSearch(lst,5)
-    print bsearch(lst,5)
+
+if __name__ == "__main__":
+    lst = sorted([2, 5, 3, 8])
+    print
+    bisectSearch(lst, 5)
+    print
+    bsearch(lst, 5)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding:utf-8
+# coding:utf-8
 
 """
 问题
@@ -9,12 +9,14 @@ int型数组b，包含10个元素。统计a数组中的元素对10求余等于0�
 """
 
 import random
-if __name__=="__main__":
-    a = [random.randint(1000,9999) for i in range(101)]
-    a_remainder = [i%10 for i in a]
+
+if __name__ == "__main__":
+    a = [random.randint(1000, 9999) for i in range(101)]
+    a_remainder = [i % 10 for i in a]
     b = [a_remainder.count(i) for i in range(10)]
-    print a
-    print a_remainder
-    print b
-
-
+    print
+    a
+    print
+    a_remainder
+    print
+    b
